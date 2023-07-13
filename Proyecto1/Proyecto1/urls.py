@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Proyecto1.views import saludo, segunda_vista, miNombreEs, probandoTemplate
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #path('', saludo),
@@ -26,4 +28,7 @@ urlpatterns = [
     path('miNombreEs/<nombre>', miNombreEs),
     path('probandoTemplate/', probandoTemplate),
     path('AppCoder/', include('AppCoder.urls')),
+
 ]
+
+urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
